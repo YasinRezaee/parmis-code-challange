@@ -1,0 +1,52 @@
+.text-area {
+  width: 100% !important;
+  height: 7rem !important;
+}
+.btn-save{
+  background-color: #30bb87;
+  border: #30bb87;
+  &:hover{
+    background-color: #0ed68b;
+  }
+}
+.input-group {
+    span{
+        border: none;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        background-color: #f8f8f8 !important;
+    }
+  .form-control {
+    background-color: #f8f8f8 !important;
+    border: none;
+    outline: none;
+    cursor: not-allowed;
+    border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+  }
+  .mat-icon{
+    cursor: pointer;
+    position: absolute;
+    left: 5px;
+    top: 6px;
+    z-index: 10;
+  }
+}
+.textarea-height{
+    height: 150px ;
+}
+.button-style{
+  all: unset;           
+  display: inline;             
+  cursor: pointer;
+  &:hover{
+    background-color: #cbcaca;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+  }
+}
+.mat-elevation-container{
+  height: 20vh;
+  overflow: auto;
+}
+

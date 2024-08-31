@@ -1,0 +1,587 @@
+<div class="container-fluid">
+  <form [formGroup]="informationForm">
+    <mat-card appearance="outlined" class="border-0">
+      <mat-card-content class="bg-light">
+        <div class="row d-flex flex-wrap">
+          <div class="col-lg-7 col-md-5">
+            <button
+            (click)="saveInformationForm(informationForm.value)"
+              name="save-info"
+              type="button"
+              class="btn btn-success btn-save px-5 mb-2"
+            >
+              ذخیره فرم
+            </button>
+          </div>
+          <div class="col-lg-5 col-md-7">
+            <mat-form-field
+              class="col-3 px-1"
+              subscriptSizing="dynamic"
+              appearance="outline">
+              <mat-label>نوع</mat-label>
+              <mat-select formControlName="type">
+                @for (item of dataService.dataSelectBox; track $index) {
+                <mat-option [value]="item.id">{{item.name}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field
+              class="col-3 px-1"
+              subscriptSizing="dynamic"
+              appearance="outline"
+            >
+              <mat-label>مرحله</mat-label>
+              <mat-select formControlName="stage">
+                @for (item of dataService.dataSelectBox; track $index) {
+                  <mat-option [value]="item.id">{{item.name}}</mat-option>
+                  }
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field
+              class="col-3 px-1"
+              subscriptSizing="dynamic"
+              appearance="outline"
+            >
+              <mat-label>وضعیت</mat-label>
+              <mat-select formControlName="status">
+                @for (item of dataService.dataSelectBox; track $index) {
+                  <mat-option [value]="item.id">{{item.name}}</mat-option>
+                  }
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field
+              class="col-3 px-1"
+              subscriptSizing="dynamic"
+              appearance="outline"
+            >
+              <mat-label>مالک</mat-label>
+              <mat-select formControlName="owner">
+                @for (item of dataService.dataSelectBox; track $index) {
+                  <mat-option [value]="item.id">{{item.name}}</mat-option>
+                  }
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row d-flex flex-wrap">
+          <div class="col-md-7">
+            <mat-card class="p-3 mt-4">
+              <mat-accordion>
+                <mat-expansion-panel [expanded]="true">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title> اطلاعات پایه</mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div class="row">
+                    <div class="col-xl-6 col-sm-12">
+                      <mat-form-field
+                        subscriptSizing="dynamic"
+                        appearance="outline"
+                        class="w-100 mt-2"
+                      >
+                        <mat-label>عنوان</mat-label>
+                        <input matInput formControlName="title"/>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xl-6 col-sm-12">
+                      <mat-form-field
+                        class="col-3 w-100 mt-2"
+                        subscriptSizing="dynamic"
+                        appearance="outline"
+                      >
+                        <mat-label>موضوع</mat-label>
+                        <mat-select formControlName="topic">
+                          @for (item of dataService.dataSelectBox; track $index) {
+                            <mat-option [value]="item.id">{{item.name}}</mat-option>
+                            }
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xl-6 col-sm-12">
+                      <mat-form-field
+                        subscriptSizing="dynamic"
+                        appearance="outline"
+                        class="w-100 mt-2"
+                      >
+                        <mat-label>طرف حساب</mat-label>
+                        <input matInput  formControlName="counterparty"/>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xl-6 col-sm-12">
+                      <mat-form-field
+                        class="col-3 w-100 mt-2"
+                        subscriptSizing="dynamic"
+                        appearance="outline"
+                      >
+                        <mat-label>گروه فعالیت</mat-label>
+                        <mat-select formControlName="groupActivity">
+                          @for (item of dataService.dataSelectBox; track $index) {
+                            <mat-option [value]="item.id">{{item.name}}</mat-option>
+                            }
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xl-6 col-sm-12">
+                      <mat-form-field
+                        subscriptSizing="dynamic"
+                        appearance="outline"
+                        class="text-area mt-3"
+                      >
+                        <mat-label>اقدامات انجام شده</mat-label>
+                        <textarea matInput formControlName="finishedTasks"></textarea>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xl-6 col-sm-12">
+                      <mat-form-field
+                        subscriptSizing="dynamic"
+                        appearance="outline"
+                        class="text-area mt-3"
+                      >
+                        <mat-label>درخواست</mat-label>
+                        <textarea matInput formControlName="request"></textarea>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </mat-expansion-panel>
+              </mat-accordion>
+              <br />
+              <mat-accordion>
+                <mat-expansion-panel [expanded]="true">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title> اطلاعات تکمیلی </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div class="row mt-1">
+                    <div class="col-lg-4 px-2">
+                      <mat-form-field
+                        class="px-1 w-100 mt-4"
+                        subscriptSizing="dynamic"
+                        appearance="outline"
+                        class="w-100 mt-3"
+                      >
+                        <mat-label>نتیجه</mat-label>
+                        <mat-select formControlName="result">
+                          @for (item of dataService.dataSelectBox; track $index) {
+                            <mat-option [value]="item.id">{{item.name}}</mat-option>
+                            }
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-lg-4">
+                      <mat-form-field
+                        class="px-1 w-100 mt-4"
+                        subscriptSizing="dynamic"
+                        appearance="outline"
+                        class="w-100 mt-3"
+                      >
+                        <mat-label>افراد مطلع</mat-label>
+                        <mat-select formControlName="informedIndividuals">
+                          @for (item of dataService.dataSelectBox; track $index) {
+                            <mat-option [value]="item.id">{{item.name}}</mat-option>
+                            }
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-lg-4 px-2">
+                      <mat-form-field
+                        class="px-1 w-100 mt-4"
+                        subscriptSizing="dynamic"
+                        appearance="outline"
+                        class="w-100 mt-3"
+                      >
+                        <mat-label>ارجاع به </mat-label>
+                        <mat-select formControlName="reference">
+                          @for (item of dataService.dataSelectBox; track $index) {
+                            <mat-option [value]="item.id">{{item.name}}</mat-option>
+                            }
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-lg-4">
+                      <mat-form-field
+                        class=" w-100 mt-4"
+                        subscriptSizing="dynamic"
+                        appearance="outline"
+                        class="w-100"
+                      >
+                        <mat-label>اولویت</mat-label>
+                        <mat-select formControlName="priorities">
+                          @for (item of dataService.dataSelectBox; track $index) {
+                            <mat-option [value]="item.id">{{item.name}}</mat-option>
+                            }
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-lg-4">
+                      <mat-form-field
+                        subscriptSizing="dynamic"
+                        appearance="outline"
+                        class="w-100"
+                      >
+                        <mat-label>تاریخ و زمان شروع واقعی</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="startedDate"/>
+
+                        <mat-datepicker-toggle
+                          matIconSuffix
+                          [for]="picker"
+                        ></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-lg-4">
+                      <mat-form-field
+                        subscriptSizing="dynamic"
+                        appearance="outline"
+                        class="w-100"
+                      >
+                        <mat-label>تاریخ و زمان پایان واقعی</mat-label>
+                        <input matInput [matDatepicker]="picker1"  formControlName="endedDate"/>
+
+                        <mat-datepicker-toggle
+                          matIconSuffix
+                          [for]="picker1"
+                        ></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-12">
+                      <mat-form-field
+                        subscriptSizing="dynamic"
+                        appearance="outline"
+                        class="text-area mt-3"
+                      >
+                        <mat-label>توضیحات</mat-label>
+                        <textarea matInput formControlName="discription"></textarea>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-2 mt-2">
+                      <mat-checkbox formControlName="editRelatedProcess">ویرایش فرایند مرتبط</mat-checkbox>
+                    </div>
+                    <div class="col-md-2 mt-2">
+                      <mat-checkbox formControlName="sendMsg">ارسال پیام</mat-checkbox>
+                    </div>
+                    <div class="col-md-2 mt-2">
+                      <mat-checkbox formControlName="showAlert">نمایش هشدار</mat-checkbox>
+                    </div>
+                    <div class="col-md-2 mt-2">
+                      <mat-checkbox formControlName="recordNextActivity">ثبت فعالیت بعدی</mat-checkbox>
+                    </div>
+                    <div class="col-md-4">
+                      <mat-form-field
+                        class="mt-3 w-100"
+                        subscriptSizing="dynamic"
+                        appearance="outline"
+                      >
+                        <mat-label> نوع فعالیت </mat-label>
+                        <mat-select formControlName="typeOfActivity">
+                          @for (item of dataService.dataSelectBox; track $index) {
+                            <mat-option [value]="item.id">{{item.name}}</mat-option>
+                            }
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </mat-card>
+          </div>
+          <div class="col-md-5 mt-4">
+            <mat-accordion>
+              <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>اطلاعات نمایشی</mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">
+                        کد پیگیری :
+                      </span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        value="123456"
+                        readonly
+                      />
+                      <mat-icon>content_copy</mat-icon>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">
+                        کد مشتری :
+                      </span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        value="123456"
+                        readonly
+                      />
+                      <mat-icon>content_copy</mat-icon>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">
+                        تلفن :
+                      </span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        value="123456"
+                        readonly
+                      />
+                      <mat-icon>content_copy</mat-icon>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">
+                        کاربر ثبت  :
+                      </span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        value="پشتیبان"
+                        readonly
+                      />
+                      <mat-icon>content_copy</mat-icon>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">
+                        تاریخ ثبت :
+                      </span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        value="403/06/10"
+                        readonly
+                      />
+                      <mat-icon>content_copy</mat-icon>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">
+                        سریال :
+                      </span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        value="123456"
+                        readonly
+                      />
+                      <mat-icon>content_copy</mat-icon>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">
+                        مالک شخص :
+                      </span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        value="رضا مرتضوی"
+                        readonly
+                      />
+                      <mat-icon>content_copy</mat-icon>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="input-group mb-3">
+                      <textarea
+                        class="form-control textarea-height"
+                        placeholder="توضیحات شخص / سرنخ"
+                      ></textarea>
+                      <mat-icon>content_copy</mat-icon>
+                    </div>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+            <div class="row mt-3">
+              <mat-accordion>
+                <mat-expansion-panel [expanded]="true">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <button class="button-style mx-2">مربوط به</button>
+                      <button class="button-style mx-2">
+                        فعالیت / فرایند های مرتبط
+                      </button>
+                      <span class="me-5">نظرات</span>
+                      <span class="badge text-bg-secondary px-2 mx-1">4</span>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <mat-accordion class="table-process mt-2">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header dir="rtl">
+                        <mat-panel-title>
+                          <mat-icon class="text-light bg-info rounded mx-2">
+                            autorenew
+                          </mat-icon>
+                          <span> فرایند </span>
+                          <div class="icon-left">
+                            <mat-icon class="mx-2"> add </mat-icon>
+                            <mat-icon class="mx-2"> search </mat-icon>
+                          </div>
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                      <div class="mat-elevation-container mx-2 mt-3">
+                        <table mat-table [dataSource]="dataSource">
+                          <ng-container matColumnDef="row">
+                            <th mat-header-cell *matHeaderCellDef>ردیف</th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element.row }}
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef>نام</th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element.name }}
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="serial">
+                            <th mat-header-cell *matHeaderCellDef>سریال</th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element.serial }}
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="code">
+                            <th mat-header-cell *matHeaderCellDef>کد</th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element.code }}
+                            </td>
+                          </ng-container>
+                          <tr
+                            mat-header-row
+                            *matHeaderRowDef="displayedColumns"
+                          ></tr>
+                          <tr
+                            mat-row
+                            *matRowDef="let row; columns: displayedColumns"
+                          ></tr>
+                        </table>
+                      </div>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                  <mat-accordion class="table-process mt-2">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header dir="rtl">
+                        <mat-panel-title>
+                          <mat-icon class="text-light bg-danger rounded mx-2">
+                            radio_button_checked
+                          </mat-icon>
+                          <span> فرصت فروش </span>
+                          <div class="icon-left">
+                            <mat-icon class="mx-2"> add </mat-icon>
+                            <mat-icon class="mx-2"> search </mat-icon>
+                          </div>
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                      <div class="mat-elevation-container mx-2 mt-3">
+                        <table mat-table [dataSource]="dataSource">
+                          <ng-container matColumnDef="row">
+                            <th mat-header-cell *matHeaderCellDef>ردیف</th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element.row }}
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef>نام</th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element.name }}
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="serial">
+                            <th mat-header-cell *matHeaderCellDef>سریال</th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element.serial }}
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="code">
+                            <th mat-header-cell *matHeaderCellDef>کد</th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element.code }}
+                            </td>
+                          </ng-container>
+                          <tr
+                            mat-header-row
+                            *matHeaderRowDef="displayedColumns"
+                          ></tr>
+                          <tr
+                            mat-row
+                            *matRowDef="let row; columns: displayedColumns"
+                          ></tr>
+                        </table>
+                      </div>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                  <mat-accordion class="table-process mt-2">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header dir="rtl">
+                        <mat-panel-title>
+                          <mat-icon class="text-light bg-warning rounded mx-2">
+                            event_note
+                          </mat-icon>
+                          <span> فاکتور</span>
+                          <div class="icon-left">
+                            <mat-icon class="mx-2"> search </mat-icon>
+                          </div>
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                      <div class="mat-elevation-container mx-2 mt-3">
+                        <table mat-table [dataSource]="dataSource">
+                          <ng-container matColumnDef="row">
+                            <th mat-header-cell *matHeaderCellDef>ردیف</th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element.row }}
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef>نام</th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element.name }}
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="serial">
+                            <th mat-header-cell *matHeaderCellDef>سریال</th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element.serial }}
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="code">
+                            <th mat-header-cell *matHeaderCellDef>کد</th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element.code }}
+                            </td>
+                          </ng-container>
+                          <tr
+                            mat-header-row
+                            *matHeaderRowDef="displayedColumns"
+                          ></tr>
+                          <tr
+                            mat-row
+                            *matRowDef="let row; columns: displayedColumns"
+                          ></tr>
+                        </table>
+                      </div>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </form>
+</div>

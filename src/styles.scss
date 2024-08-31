@@ -1,0 +1,147 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "Vazir";
+  src: url("../assets/font/Vazir.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: "Vazir";
+  box-sizing: border-box;
+}
+.material-icons {
+  font-family: "Material Icons" !important;
+}
+html,
+body {
+  height: 100% !important;
+  margin: 0;
+  padding: 0 !important;
+  margin: 0 !important;
+
+  font-family: Vazir, "Vazir", sans-serif !important;
+  background-color: rgb(249, 250, 251) !important;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.mat-mdc-form-field-type-mat-select:not(.mat-form-field-disabled)
+  .mat-mdc-text-field-wrapper {
+  background-color: white !important;
+}
+.mat-mdc-form-field:not(.mat-form-field-disabled)
+  .mat-mdc-floating-label.mdc-floating-label {
+  color: black !important;
+  font-family: Vazir, "Vazir", sans-serif !important;
+}
+.mat-mdc-form-field:not(.mat-form-field-disabled)
+  .mat-mdc-floating-label.mdc-floating-label {
+  top: 18px !important;
+}
+.mat-mdc-icon-button.mat-mdc-button-base {
+  margin-bottom: 2em !important;
+}
+.mdc-text-field--outlined .mat-mdc-form-field-infix,
+.mdc-text-field--no-label .mat-mdc-form-field-infix {
+  padding-top: 8px !important;
+}
+.mat-mdc-text-field-wrapper {
+  height: 40px !important;
+}
+.cdk-overlay-pane:not(.mat-mdc-select-panel-above) div.mat-mdc-select-panel {
+  background-color: white !important;
+}
+.mat-mdc-card {
+  background-color: #fff !important;
+  border-radius: 5px !important;
+  box-shadow: none !important;
+  border: 1px solid #dde0e2 !important;
+}
+.mat-expansion-panel {
+  margin-bottom: 0;
+  border: 1px solid #dde0e2 !important;
+  border-radius: 5px !important;
+  box-shadow: none !important;
+}
+.mdc-label {
+  font-size: 11px !important;
+}
+.mat-mdc-header-row {
+  background-color: #dedede !important;
+}
+.table-process {
+  .mat-content {
+    order: 1 !important;
+  }
+  .mat-expansion-indicator {
+    background-color: #cac8c8;
+    padding: 0 8px;
+    border-radius: 4px;
+  }
+  .icon-left {
+    position: absolute;
+    left: 0;
+  }
+  .mat-expansion-panel {
+    margin-top: 8px;
+  }
+}
+
+//  ججججججججججججججججججججججججججججججججججججججججججججج؟
+
+.mat-mdc-form-field {
+  // width: 100% !important;
+  padding-right: 10px !important;
+  padding-left: 10px !important;
+  height: 2.7rem !important;
+  border-radius: 3px;
+
+  @media screen and (max-width: 780px) {
+    margin-left: 10px !important;
+  }
+}
+.mat-form-field-appearance-outline {
+  .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
+    top: 20px !important;
+
+    &.mdc-floating-label--float-above {
+      top: 28px !important;
+    }
+  }
+
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: transparent !important;
+  }
+}
+
+.mat-expansion-panel-header {
+  height: 40px !important;
+}
+
+.mat-mdc-header-row,
+.mat-mdc-row {
+  height: 40px !important;
+}
+
+.mat-mdc-text-field-wrapper {
+  width: 100%;
+  z-index: 0;
+  background: #fefefe !important;
+}
